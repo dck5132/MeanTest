@@ -2,20 +2,23 @@
   "name": "projectnode",
   "version": "1.0.0",
   "description": ",-----.,--.                  ,--. ,---.   ,--.,------.  ,------.     '  .--./|  | ,---. ,--.,--. ,-|  || o   \\  |  ||  .-.  \\ |  .---'     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \\  :|  `--,      '  '--'\\|  |' '-' ''  ''  '\\ `-' | .'  /   |  ||  '--'  /|  `---.      `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'     -----------------------------------------------------------------",
-  "main": "server.js",
+  "main": "app.js",
   "dependencies": {
+    "bootstrap-v4-dev": "^4.0.0-alpha.6",
     "express": "^4.15.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dck5132/MeanTest.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/dck5132/MeanTest.git",
+  "author": "Cyril Kalikin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dck5132/MeanTest/issues"
