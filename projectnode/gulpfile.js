@@ -10,7 +10,7 @@ gulp.task('style', function() {
 });
 
 gulp.task('module', function () {
-    var target = gulp.src('./src/views/index.html');
+    var target = gulp.src('./src/views/index.ejs');
     
     var nodeSources = gulp.src([
         './node_modules/jquery/dist/jquery.min.js',
@@ -25,7 +25,7 @@ gulp.task('module', function () {
 });
 
 gulp.task('public', function () {
-    var target = gulp.src('./src/views/index.html');
+    var target = gulp.src('./src/views/index.ejs');
         
     var publicSources = gulp.src([
         './public/css/*.min.css',
@@ -41,7 +41,7 @@ gulp.task('public', function () {
 
 gulp.task('serve', ['style','module','public'], function(){
     var options = {
-        script: 'app.js',
+        script: './bin/www',
         delayTime: 1,
         watch: jsFiles
     };

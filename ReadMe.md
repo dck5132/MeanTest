@@ -7,4 +7,5 @@
 * MongoDB
 * Yarn
 * Gulp
+* EJS
 ---

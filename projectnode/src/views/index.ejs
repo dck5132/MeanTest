@@ -44,21 +44,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            
+            <li>
+              <% for (var i =0;i<nav.length;i++) {%>
+                <a class="nav-link js-scroll-trigger" href="<%="#" + nav[i].Link%>"><%=nav[i].Text%></a>
+              <% } %>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
+            
+            <!--<li class="nav-item">-->
+            <!--  <a class="nav-link js-scroll-trigger" href="#services">Services</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--  <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--  <a class="nav-link js-scroll-trigger" href="#about">About</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--  <a class="nav-link js-scroll-trigger" href="#team">Team</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--  <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+            <!--</li>-->
           </ul>
         </div>
       </div>
@@ -74,6 +81,14 @@
         </div>
       </div>
     </header>
+
+    <ul>
+      <% for (var i=0;i<list.length;i++){ %>
+        <li>
+          <h4><%=list[i] %></h4>
+        </li>
+      <% } %>
+    </ul>
 
     <!-- Services -->
     <section id="services">
