@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var inject = require('gulp-inject');
-
+var nodemon = require('gulp-nodemon');
 var jsFiles = ['*.js','src/**/*.js'];
 
 gulp.task('style', function() {
@@ -38,6 +38,15 @@ gulp.task('public', function () {
     .pipe(gulp.dest('./src/views'));
 });
 
-gulp.task('inject', function() {
-    
+
+gulp.task('serve', ['style','module','public'], function(){
+    var options = {
+        script: 'app.js',
+        delayTime: 1,
+        watch: jsFiles
+    };
+    return nodemon(options)
+        .on('restart', function() {
+            console.log("Server Restart");
+        });
 });
