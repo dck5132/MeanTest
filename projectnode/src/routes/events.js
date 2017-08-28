@@ -68,7 +68,7 @@ var eventsData = [ {
 ];
 
 router.get('/', function(req,res,next) {
-       res.render('event', {list: ['first event', '2nd event', '3rd event'],
+       res.render('events', {list: ['first event', '2nd event', '3rd event'],
         nav: [
             {Text : 'Services', Link :'services'},
             {Text : 'Portfolio', Link : 'portfolio'},
@@ -82,8 +82,19 @@ router.get('/', function(req,res,next) {
     next();
 });
 
-router.get('/events',function(req,res,next) {
-      res.send('Hello Single Event Test');
+router.get('/:id',function(req,res,next) {
+    var id = req.params.id;
+      res.render('event', {list: ['first event', '2nd event', '3rd event'],
+        nav: [
+            {Text : 'Services', Link :'services'},
+            {Text : 'Portfolio', Link : 'portfolio'},
+            {Text : 'About', Link :'about'},
+            {Text : 'Team', Link :'team'},
+            {Text : 'Contact', Link :'contact'},
+            {Text : 'Events', Link :'events'}
+            ],
+            events : eventsData[id]
+    });
       next();
 });
 

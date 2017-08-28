@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./src/routes/index');
-var event = require('./src/routes/event');
+var events = require('./src/routes/events');
 //var users = require('./routes/users');
 
 var app = express();
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/event', event);
+app.use('/events', events);
 //app.use('/users', users);
 
 app.get("/routing", function(req,res,next){
