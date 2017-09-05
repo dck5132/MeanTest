@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./src/routes/index');
 var events = require('./src/routes/events');
-//var users = require('./routes/users');
+var dbRoutes = require('./src/routes/dbRoutes');
 
 var app = express();
 
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/events', events);
-//app.use('/users', users);
+app.use('/dbRoutes', dbRoutes);
 
 app.get("/routing", function(req,res,next){
     res.send("Routing Success!");
