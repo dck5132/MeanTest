@@ -40,7 +40,7 @@ router.get('/:id',function(req,res,next) {
             {Text : 'Contact', Link :'contact'},
             {Text : 'Events', Link :'events'}
             ],
-            events : eventsData[id]
+            events : results[id]
     });
       next();
 });
