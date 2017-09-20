@@ -1,6 +1,7 @@
 var express = require('express');
 var serveStatic = require('serve-static');
 var mongodb = require('mongodb').MongoClient;
+var path = require('path');
 
 var app = express();
 var port =  process.env.PORT;
@@ -71,12 +72,16 @@ var eventsJson= [  {
                 }
 ];
 
-app.use(serveStatic(__dirname + '/bower_components'));
-app.use(serveStatic(__dirname + '/public'));
+//app.use(serveStatic(__dirname + '/bower_components'));
+//app.use(serveStatic(__dirname + '/public'));
+
+app.use(express.static('node_modules'));
 // app.use(serveStatic(__dirname + '/src/views'));
 
-app.set('views', './src/views');
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 var registryDox = "[]";
 var zipAggDox = "[]";

@@ -1,28 +1,32 @@
 {
   "name": "events_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cyril's version of events_app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node ./bin/www",
+    "mongo": "mongod --bind_ip=$IP --nojournal"
   },
-  "author": "",
+  "author": "Cyril Kalikin",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^2.4.1",
-    "express": "^4.13.4",
-    "mongodb": "^2.1.7",
-    "serve-static": "^1.10.2"
+    "bootstrap-v4-dev": "^4.0.0-alpha.6",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "font-awesome": "^4.7.0",
+    "global": "^4.3.2",
+    "jquery.easing": "^1.4.1",
+    "mongodb": "^2.2.31",
+    "popper.js": "^1.12.5",
+    "serve-static": "^1.12.4"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-inject": "^3.0.0",
-    "gulp-jshint": "^2.0.0",
-    "gulp-nodemon": "^2.0.6",
-    "jshint": "^2.9.1",
-    "jshint-stylish": "^2.1.0",
-    "nodemon": "^1.8.1",
-    "wiredep": "^3.0.0"
+    "gulp-inject": "^4.3.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "nodemon": "^1.8.1"
   }
 }

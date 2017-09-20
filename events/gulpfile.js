@@ -1,8 +1,9 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
+var inject = require('gulp-inject');
 var nodemon = require('gulp-nodemon');
 
-var jsFiles = ['*.js', 'src/**/*.js'];
+var jsFiles = ['*.js','src/**/*.js'];
 
 gulp.task('style', function(){
     gulp.src(jsFiles)
@@ -11,30 +12,39 @@ gulp.task('style', function(){
             verbose: true
         }));
 });
+gulp.task('module', function () {
+    var target = gulp.src('./src/views/index.ejs');
+    
+    var nodeSources = gulp.src([
+        './node_modules/jquery/dist/jquery.min.js',
+        './node_modules/bootstrap-v4-dev/dist/js/*.min.js',
+        './node_modules/jquery.easing/jquery.easing.min.js',
+        './node_modules/popper.js/dist/popper.min.js',
+        './node_modules/bootstrap-v4-dev/dist/css/bootstrap.min.css',
+        './node_modules/font-awesome/css/font-awesome.min.css'
+        ],
+        {read:false});
 
-gulp.task('inject', function(){
-    var wiredep = require('wiredep').stream;
-    var inject = require('gulp-inject');
-    
-    var injectSrc = gulp.src(['./public/css/*.css',
-                              './public/js/*.js'], {read: false});
-                             
-    var injectOptions = {
-        ignorePath: '/public'
-    };
-    
-    var options = {
-        bowerJson: require('./bower.json'),
-        directory: './bower_components',
-        ignorePath: '../../bower_components'
-    };
-    return gulp.src('./src/views/*.html')
-        .pipe(wiredep(options))
-        .pipe(inject(injectSrc, injectOptions))
-        .pipe(gulp.dest('./src/views'));
+  return target
+    .pipe(inject(nodeSources, {ignorePath: 'node_modules', name: 'boot'}))
+    .pipe(gulp.dest('./src/views'));
 });
 
-gulp.task('serve', ['style', 'inject'], function(){
+gulp.task('public', function () {
+    var target = gulp.src('./src/views/index.ejs');
+        
+    var publicSources = gulp.src([
+        './public/css/*.css',
+        './public/js/*.js'],
+    {read:false});
+    
+  return target
+    .pipe(inject(publicSources, {ignorePath: 'public', name: 'public'}))
+    .pipe(gulp.dest('./src/views'));
+});
+
+
+gulp.task('serve', ['style','module','public'], function(){
     var options = {
         script: 'app.js',
         delayTime: 1,
@@ -43,9 +53,8 @@ gulp.task('serve', ['style', 'inject'], function(){
         },
         watch: jsFiles
     };
-    
     return nodemon(options)
-    .on('restart', function(ev){
-        console.log('Restarting... ');
-    });
+        .on('restart', function() {
+            console.log("Server Restart");
+        });
 });
